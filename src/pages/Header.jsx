@@ -1,29 +1,105 @@
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.svg";
 import { Case, File, Github, HomeIcon, User } from "../components/Icons";
+import { useState } from "react";
 
 const headers = [
   { title: "Home", to: "/", component: <HomeIcon /> },
-  { title: "Projects", to: "/projects", component: <Github /> },
-  { title: "Experience", to: "/experience", component: <Case /> },
+  { title: "Projects", to: "/projects", component: <Github />, disabled: true },
+  { title: "Experience", to: "/experience", component: <Case />, disabled: true },
   { title: "Resume", to: "/resume", component: <File /> },
-  { title: "About", to: "/about", component: <User /> },
+  { title: "About", to: "/about", component: <User />, disabled: true },
 ];
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <header className="border-b-2 border-gray-500 py-5 px-20 flex">
-      <Link to="/" className="will-change-transform duration-300 hover:-translate-y-1 hover:scale-125">
-        <img src={logo} className="h-12" />
-      </Link>
-      <div className="flex m-auto gap-6 mt-2">
-        {headers.map((header) => (
-          <section className="flex gap-1 text-xl will-change-transform duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer">
-            {header.component}
-            <NavLink to={header.to}>{header.title}</NavLink>
-          </section>
-        ))}
+    <header className="border-b-2 border-gray-500 py-5 px-4 lg:px-20">
+      <div className="flex justify-between items-center">
+        <Link
+          to="/"
+          className="will-change-transform duration-300 hover:-translate-y-1 hover:scale-125"
+        >
+          <img src={logo} className="h-10" />
+        </Link>
+  
+        {/* Mobile Menu Button */}
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden text-gray-500 hover:text-gray-700"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            {isMenuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
+  
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex mx-auto gap-6 mt-2">
+          {headers.map((header) => (
+            <section
+              key={header.title}
+              className={(header.disabled ? "opacity-50 line-through " : "will-change-transform duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer ") + "flex gap-1 text-xl"}
+            >
+              {header.component}
+              <NavLink
+                to={header.to}
+                style={() => ({
+                  pointerEvents: header.disabled ? "none" : "auto",
+                })}
+              >
+                {header.title}
+              </NavLink>
+            </section>
+          ))}
+        </div>
       </div>
+  
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="lg:hidden mt-4 space-y-4">
+          {headers.map((header) => (
+            <section
+              key={header.title}
+              className={(header.disabled ? "opacity-50 line-through " : "") + "flex items-center gap-2 text-lg py-2"}
+            >
+              {header.component}
+              <NavLink
+                to={header.to}
+                style={() => ({
+                  pointerEvents: header.disabled ? "none" : "auto",
+                })}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {header.title}
+              </NavLink>
+            </section>
+          ))}
+        </div>
+      )}
     </header>
   );
 }
