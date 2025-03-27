@@ -3,6 +3,7 @@ import RootLayout from "./pages/RootLayout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Resume from "./pages/Resume";
+import Projects from "./pages/Projects";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,7 +19,11 @@ function App() {
         {
           path: "resume",
           element: <Resume />
-        }
+        },
+        {
+          path: "projects",
+          element: <Projects />
+        },
       ],
     },
   ]);

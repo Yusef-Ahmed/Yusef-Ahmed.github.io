@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const headers = [
   { title: "Home", to: "/", component: <HomeIcon /> },
-  { title: "Projects", to: "/projects", component: <Github />, disabled: true },
+  { title: "Projects", to: "/projects", component: <Github />, disabled: false },
   { title: "Experience", to: "/experience", component: <Case />, disabled: true },
   { title: "Resume", to: "/resume", component: <File /> },
   { title: "About", to: "/about", component: <User />, disabled: true },

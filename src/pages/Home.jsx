@@ -14,14 +14,14 @@ const contacts = [
 
 function Home() {
   return (
-    <main className="lg:mx-5 lg:mt-18 mt-8 flex justify-between">
-      <section className="lg:w-4/7 flex flex-col justify-between h-[70vh]">
+    <main className="lg:mx-5 lg:mt-18 mt-8 flex justify-between items-center">
+      <section className="lg:w-5/7 flex flex-col gap-10 -mt-15">
         <div>
-          <div className="flex flex-col justify-center items-center lg:items-baseline gap-2 font-medium">
-            <h1 className="lg:text-5xl text-3xl">Hi</h1>
+          <div className="flex flex-col justify-center items-center lg:items-baseline gap-2 font-semibold">
+            <h1 className="lg:text-6xl text-3xl">Hi</h1>
             <div className="flex flex-row gap-4">
-              <h1 className="text-2xl lg:text-5xl">I'm</h1>
-              <h1 className="text-2xl lg:text-5xl text-purple-600 font-bold">
+              <h1 className="text-2xl lg:text-6xl">I'm</h1>
+              <h1 className="text-2xl lg:text-6xl text-purple-600 font-bold">
                 {" "}
                 Youssef Ahmed
               </h1>
@@ -38,7 +38,7 @@ function Home() {
               wrapper="span"
               speed={200}
               deletionSpeed={220}
-              className="lg:text-5xl text-xl inline-block"
+              className="lg:text-6xl text-xl inline-block"
               repeat={Infinity}
             />
           </div>
@@ -57,7 +57,7 @@ function Home() {
             rating on CodeForces and have qualified for the Arab Collegiate
             Programming Contest (ACPC) twice in a row.
           </p>
-          <p className="mt-5 text-xs md:text-lg text-gray-300">
+          <p className="mt-2 text-xs md:text-lg text-gray-300">
             At the end,
             <span className="text-purple-500 uppercase font-bold ml-1">
               <TypeAnimation
