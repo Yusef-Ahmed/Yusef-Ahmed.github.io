@@ -6,22 +6,34 @@ import me from "../../assets/me2.jpg";
 import { TypeAnimation } from "react-type-animation";
 
 const contacts = [
-  { link: "https://www.linkedin.com/in/yussif-ahmed", src: linkedin },
-  { link: "mailto:yousseffcai@gmail.com", src: gmail },
-  { link: "https://github.com/Yusef-Ahmed", src: github },
-  { link: "https://codeforces.com/profile/TANJIR0U", src: codeforces },
+  {
+    link: "https://www.linkedin.com/in/yussif-ahmed",
+    src: linkedin,
+  },
+  {
+    link: "mailto:yousseffcai@gmail.com",
+    src: gmail,
+  },
+  {
+    link: "https://github.com/Yusef-Ahmed",
+    src: github,
+  },
+  {
+    link: "https://codeforces.com/profile/TANJIR0U",
+    src: codeforces,
+  },
 ];
 
 function Home() {
   return (
-    <main className="lg:mx-5 lg:mt-18 mt-8 flex justify-between items-center">
+    <main className="lg:mx-5 mt-18 flex justify-between items-center lg:h-auto h-[70vh]">
       <section className="lg:w-5/7 flex flex-col gap-10 -mt-15">
         <div>
           <div className="flex flex-col justify-center items-center lg:items-baseline gap-2 font-semibold">
-            <h1 className="lg:text-6xl text-3xl">Hi</h1>
+            <h1 className="lg:text-6xl text-4xl">Hi</h1>
             <div className="flex flex-row gap-4">
-              <h1 className="text-2xl lg:text-6xl">I'm</h1>
-              <h1 className="text-2xl lg:text-6xl text-purple-600 font-bold">
+              <h1 className="text-4xl lg:text-6xl">I'm</h1>
+              <h1 className="text-4xl lg:text-6xl text-purple-600 font-bold">
                 {" "}
                 Youssef Ahmed
               </h1>
@@ -38,7 +50,7 @@ function Home() {
               wrapper="span"
               speed={200}
               deletionSpeed={220}
-              className="lg:text-6xl text-xl inline-block"
+              className="lg:text-6xl text-[25px] inline-block"
               repeat={Infinity}
             />
           </div>
@@ -69,11 +81,13 @@ function Home() {
             </span>
           </p>
         </div>
-        <div className="gap-10 flex">
+        <div className="lg:gap-10 flex lg:justify-normal justify-around">
           {contacts.map((contact) => (
             <a key={contact.link} target="_blank" href={contact.link}>
               <img
-                className="lg:w-12 w-9 duration-200 hover:-translate-y-2"
+                className={
+                  "lg:w-12 w-9 animate-[bounce_2s_infinite] hover:animate-none"
+                }
                 src={contact.src}
               />
             </a>

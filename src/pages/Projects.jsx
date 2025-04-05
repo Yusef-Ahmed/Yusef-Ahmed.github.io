@@ -67,7 +67,7 @@ export default function Projects() {
             </a>
             <div>
               {repo.description.split("•").map((point) => (
-                <div className="flex gap-2 mb-2">
+                <div key={point} className="flex gap-2 mb-2">
                   <p className="text-3xl -mt-2">•</p>
                   <p className="text-md font-semibold">{point}.</p>
                 </div>
@@ -75,7 +75,9 @@ export default function Projects() {
             </div>
             <div className="flex flex-wrap gap-3 mt-5">
               {repo.topics.map((topic) => (
-                <p className="border p-1 rounded-md capitalize">{topic}</p>
+                <p key={topic} className="border p-1 rounded-md capitalize">
+                  {topic}
+                </p>
               ))}
             </div>
           </div>
