@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Resume from "./pages/Resume";
 import Projects from "./pages/Projects";
+import projectsLoader from "../src/hooks/projectsLoader"
 
 function App() {
   const router = createBrowserRouter([
@@ -22,7 +23,8 @@ function App() {
         },
         {
           path: "projects",
-          element: <Projects />
+          element: <Projects />,
+          loader: projectsLoader
         },
       ],
     },

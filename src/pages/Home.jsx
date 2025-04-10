@@ -4,6 +4,8 @@ import github from "../../assets/github.png";
 import codeforces from "../../assets/codeforces.png";
 import me from "../../assets/me2.jpg";
 import { TypeAnimation } from "react-type-animation";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "motion/react";
 
 const contacts = [
   {
@@ -27,8 +29,12 @@ const contacts = [
 function Home() {
   return (
     <main className="lg:mx-5 mt-18 flex justify-between items-center lg:h-auto h-[70vh]">
-      <section className="lg:w-5/7 flex flex-col gap-10 -mt-15">
-        <div>
+      <div className="lg:w-5/7 flex flex-col gap-20 -mt-15">
+        <motion.div
+          initial={{ x: -200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", duration: 2 }}
+        >
           <div className="flex flex-col justify-center items-center lg:items-baseline gap-2 font-semibold">
             <h1 className="lg:text-6xl text-4xl">Hi</h1>
             <div className="flex flex-row gap-4">
@@ -80,23 +86,44 @@ function Home() {
               />
             </span>
           </p>
-        </div>
+        </motion.div>
         <div className="lg:gap-10 flex lg:justify-normal justify-around">
-          {contacts.map((contact) => (
-            <a key={contact.link} target="_blank" href={contact.link}>
-              <img
-                className={
-                  "lg:w-12 w-9 animate-[bounce_2s_infinite] hover:animate-none"
-                }
+          {contacts.map((contact, index) => (
+            <motion.a
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 2,
+                delay: 0.2 * index,
+              }}
+              key={contact.link}
+              target="_blank"
+              href={contact.link}
+            >
+              <motion.img
+                animate={{ y: -20 }}
+                transition={{
+                  duration: 2,
+                  delay: 0.2 * index,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                className="lg:w-12 w-9"
                 src={contact.src}
               />
-            </a>
+            </motion.a>
           ))}
         </div>
-      </section>
-      <section className="lg:h-1/2 lg:w-2/7 lg:-mt-10">
+      </div>
+      <motion.div
+        initial={{ x: 20, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 2 }}
+        className="lg:h-1/2 lg:w-2/7 lg:-mt-10"
+      >
         <img className="rounded-2xl hidden lg:block" src={me} />
-      </section>
+      </motion.div>
     </main>
   );
 }
