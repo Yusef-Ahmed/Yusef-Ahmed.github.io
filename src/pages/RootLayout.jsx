@@ -3,10 +3,10 @@ import Header from "./Header";
 
 function RootLayout() {
   return (
-    <>
+    <main className="container mx-auto">
       <Header />
       <Outlet />
-    </>
+    </main>
   );
 }
 

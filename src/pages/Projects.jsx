@@ -20,14 +20,14 @@ const monthNames = [
 ];
 
 export default function Projects() {
-  const repos = useLoaderData();
+  const data = useLoaderData();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (repos) {
+    if (data) {
       setIsLoading(false);
     }
-  }, [repos]);
+  }, [data]);
 
   if (isLoading) {
     return <Loading />;
@@ -35,7 +35,7 @@ export default function Projects() {
 
   return (
     <div className="flex flex-wrap justify-center">
-      {repos.map((repo, index) => {
+      {data.map((repo, index) => {
         let [year, month] = repo.created_at.split("-");
         month = monthNames[+month];
         return <Card month={month} year={year} repo={repo} index={index} />;

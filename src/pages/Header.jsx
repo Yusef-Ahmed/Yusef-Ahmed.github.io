@@ -2,13 +2,24 @@ import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.svg";
 import { Case, File, Github, HomeIcon, User } from "../components/Icons";
 import { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "motion/react";
 
 const headers = [
   { title: "Home", to: "/", component: <HomeIcon /> },
-  { title: "Projects", to: "/projects", component: <Github />, disabled: false },
-  { title: "Experience", to: "/experience", component: <Case />, disabled: true },
+  {
+    title: "Projects",
+    to: "/projects",
+    component: <Github />,
+    disabled: false,
+  },
+  {
+    title: "Experience",
+    to: "/experience",
+    component: <Case />,
+    disabled: true,
+  },
   { title: "Resume", to: "/resume", component: <File /> },
-  { title: "About", to: "/about", component: <User />, disabled: true },
 ];
 
 function Header() {
@@ -27,7 +38,7 @@ function Header() {
         >
           <img src={logo} className="h-10" />
         </Link>
-  
+
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
@@ -56,13 +67,21 @@ function Header() {
             )}
           </svg>
         </button>
-  
+
         {/* Desktop Menu */}
         <div className="hidden lg:flex mx-auto gap-6 mt-2">
-          {headers.map((header) => (
-            <section
+          {headers.map((header, index) => (
+            <motion.section
+              initial={{ y: -100 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, type: "spring", delay: 0.3 * index }}
               key={header.title}
-              className={(header.disabled ? "opacity-50 line-through " : "will-change-transform duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer ") + "flex gap-1 text-xl"}
+              className={
+                (header.disabled
+                  ? "opacity-50 line-through "
+                  : "hover:scale-110 hover:-translate-y-2 cursor-pointer ") +
+                "will-change-transform duration-200 flex gap-1 text-xl"
+              }
             >
               {header.component}
               <NavLink
@@ -73,18 +92,21 @@ function Header() {
               >
                 {header.title}
               </NavLink>
-            </section>
+            </motion.section>
           ))}
         </div>
       </div>
-  
+
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="lg:hidden mt-4 space-y-4">
           {headers.map((header) => (
             <section
               key={header.title}
-              className={(header.disabled ? "opacity-50 line-through " : "") + "flex items-center gap-2 text-lg py-2"}
+              className={
+                (header.disabled ? "opacity-50 line-through " : "") +
+                "flex items-center gap-2 text-lg py-2"
+              }
             >
               {header.component}
               <NavLink

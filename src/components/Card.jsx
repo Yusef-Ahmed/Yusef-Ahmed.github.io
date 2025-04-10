@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from "motion/react";
-import altImage from "../../assets/project-alt.jpeg";
+// import altImage from "../../assets/project-alt.jpeg";
 import { useRef } from "react";
 
 export default function Card({ repo, month, year, index }) {
@@ -26,7 +26,7 @@ export default function Card({ repo, month, year, index }) {
           </p>
         </header>
         {/* Todo: should be Gif of project in future */}
-        <img className="my-2 rounded-sm h-1/3 w-full" src={altImage} />
+        <img className="my-2 rounded-sm h-1/3 w-full" src={repo.image} />
       </a>
       <div>
         {repo.description.split("•").map((point) => (

@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Resume from "./pages/Resume";
 import Projects from "./pages/Projects";
-import projectsLoader from "../src/hooks/projectsLoader"
+import projectsLoader from "../src/hooks/projectsLoader";
+import ResumeLoading from "./components/ResumeLoading";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,12 +20,12 @@ function App() {
         },
         {
           path: "resume",
-          element: <Resume />
+          element: <Resume />,
         },
         {
           path: "projects",
           element: <Projects />,
-          loader: projectsLoader
+          loader: projectsLoader,
         },
       ],
     },
