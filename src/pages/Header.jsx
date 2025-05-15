@@ -17,7 +17,7 @@ const headers = [
     title: "Experience",
     to: "/experience",
     component: <Case />,
-    disabled: true,
+    disabled: false,
   },
   { title: "Resume", to: "/resume", component: <File /> },
 ];

@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --color-secondary: #9810fa;
+}
+
 body {
   background-color: #1A1A1D;
-  /* font-family: cursive; */
+  font-family: Geist;
   color: #e2e8f0;
   padding: 20px;
   padding-top: 0px;

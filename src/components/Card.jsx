@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 export default function Card({ repo, month, year, index }) {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, {once: true});
 
   return (
     <motion.div

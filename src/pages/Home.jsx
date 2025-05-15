@@ -39,7 +39,7 @@ function Home() {
             <h1 className="lg:text-6xl text-4xl">Hi</h1>
             <div className="flex flex-row gap-4">
               <h1 className="text-4xl lg:text-6xl">I'm</h1>
-              <h1 className="text-4xl lg:text-6xl text-purple-600 font-bold">
+              <h1 className="text-4xl lg:text-6xl text-secondary font-bold">
                 {" "}
                 Youssef Ahmed
               </h1>
